@@ -2,6 +2,8 @@ package com.tweteroo.tweterooapi.models;
 
 import org.hibernate.validator.constraints.URL;
 
+import com.tweteroo.tweterooapi.dto.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +16,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class User {
+
+    public User (UserDTO req) {
+        this.username = req.username();
+        this.avatar = req.avatar();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
